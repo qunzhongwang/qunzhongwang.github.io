@@ -1,0 +1,480 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Stability Tricks in RL Training - Qunzhong Wang</title>
+  <meta name="author" content="Qunzhong Wang">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="../images/profile_bright.jpeg" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: Verdana, Kaiti SC, Geneva, sans-serif;
+      margin: 0;
+      background-color: #f4f4f9;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    .top-nav {
+      background-color: #0d254c;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky; 
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-name {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 25px;
+      font-size: 1.1em;
+    }
+
+    .nav-links a:hover {
+      color: #a9cce3;
+    }
+
+    .main-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    .content-card {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 40px 60px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .back-link {
+      color: #0056b3;
+      text-decoration: none;
+      font-size: 0.95em;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      color: #0d254c;
+      margin-bottom: 10px;
+      border-bottom: 3px solid #0d254c;
+      padding-bottom: 15px;
+    }
+
+    .meta {
+      color: #888;
+      font-size: 0.95em;
+      margin-bottom: 30px;
+    }
+
+    .tags {
+      margin: 20px 0;
+    }
+
+    .tags span {
+      display: inline-block;
+      background-color: #0d254c;
+      color: white;
+      padding: 5px 12px;
+      border-radius: 3px;
+      font-size: 0.9em;
+      margin-right: 8px;
+    }
+
+    h2 {
+      font-size: 1.6em;
+      color: #0d254c;
+      margin-top: 35px;
+      margin-bottom: 15px;
+      border-left: 4px solid #0d254c;
+      padding-left: 15px;
+    }
+
+    h3 {
+      font-size: 1.3em;
+      color: #333;
+      margin-top: 25px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+
+    code {
+      background-color: #f5f5f5;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+      color: #d63384;
+    }
+
+    pre {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+      border-left: 4px solid #0d254c;
+    }
+
+    pre code {
+      background-color: transparent;
+      padding: 0;
+      color: #333;
+    }
+
+    ul, ol {
+      margin: 15px 0;
+      padding-left: 30px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .trick-box {
+      background-color: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+
+    .warning-box {
+      background-color: #f8d7da;
+      border-left: 4px solid #dc3545;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .content-card {
+        padding: 25px 20px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="top-nav">
+    <a href="../index.html" class="nav-name">Qunzhong Wang</a>
+    <nav class="nav-links">
+      <a href="../blog.html">← Back to Blog</a>
+    </nav>
+  </header>
+
+  <div class="main-container">
+    <section class="content-card">
+      <a href="../blog.html" class="back-link">← Back to Blog List</a>
+      
+      <h1>Stability Tricks in RL Training</h1>
+      
+      <div class="meta">
+        Published: December 2024 | Author: Qunzhong Wang
+      </div>
+
+      <div class="tags">
+        <span>Reinforcement Learning</span>
+        <span>Training Stability</span>
+        <span>Best Practices</span>
+        <span>Technical Blog</span>
+      </div>
+
+      <h2>1. Introduction</h2>
+      <p>
+        Reinforcement learning training is notoriously unstable. Small hyperparameter changes can lead to catastrophic failures or divergence. This post summarizes practical tricks that have proven effective in stabilizing RL training across different algorithms (PPO, SAC, DQN, etc.).
+      </p>
+
+      <h2>2. Gradient and Update Stability</h2>
+
+      <h3>2.1 Gradient Clipping</h3>
+      <p>
+        Essential for preventing exploding gradients, especially in recurrent architectures:
+      </p>
+      <pre><code>torch.nn.utils.clip_grad_norm_(
+    model.parameters(), 
+    max_norm=0.5  # Typical range: 0.5-10.0
+)</code></pre>
+
+      <div class="trick-box">
+        <strong>Trick:</strong> Use different clipping values for actor and critic networks. Critic often needs more aggressive clipping (0.5-1.0) while actor can handle larger values (1.0-10.0).
+      </div>
+
+      <h3>2.2 Value Function Clipping (PPO)</h3>
+      <p>
+        Prevent large value function updates:
+      </p>
+      <pre><code>value_pred_clipped = value_old + (value_pred - value_old).clamp(
+    -clip_range, clip_range
+)
+value_loss = torch.max(
+    (value_pred - returns).pow(2),
+    (value_pred_clipped - returns).pow(2)
+).mean()</code></pre>
+
+      <h3>2.3 KL Divergence Monitoring</h3>
+      <p>
+        Track policy change magnitude and use adaptive clipping:
+      </p>
+      <pre><code>kl_div = torch.distributions.kl_divergence(
+    old_dist, new_dist
+).mean()
+
+if kl_div > target_kl * 1.5:
+    clip_range *= 0.9  # Reduce clip range
+elif kl_div < target_kl / 1.5:
+    clip_range *= 1.1  # Increase clip range</code></pre>
+
+      <h2>3. Reward Scaling and Normalization</h2>
+
+      <h3>3.1 Reward Normalization</h3>
+      <p>
+        Maintain running statistics of rewards:
+      </p>
+      <pre><code>class RewardNormalizer:
+    def __init__(self, epsilon=1e-8):
+        self.mean = 0.0
+        self.var = 1.0
+        self.count = 0
+        self.epsilon = epsilon
+    
+    def normalize(self, reward):
+        self.count += 1
+        delta = reward - self.mean
+        self.mean += delta / self.count
+        self.var += delta * (reward - self.mean)
+        std = np.sqrt(self.var / self.count + self.epsilon)
+        return (reward - self.mean) / std</code></pre>
+
+      <h3>3.2 Reward Clipping</h3>
+      <pre><code># Clip rewards to reasonable range
+reward = np.clip(reward, -10.0, 10.0)</code></pre>
+
+      <div class="warning-box">
+        <strong>Warning:</strong> Aggressive reward clipping can remove important signal. Start with wide ranges (-10, 10) and tighten if needed.
+      </div>
+
+      <h3>3.3 Return Normalization (GAE)</h3>
+      <p>
+        Normalize advantage estimates:
+      </p>
+      <pre><code>advantages = (advantages - advantages.mean()) / (
+    advantages.std() + 1e-8
+)</code></pre>
+
+      <h2>4. Network Architecture Tricks</h2>
+
+      <h3>4.1 Orthogonal Initialization</h3>
+      <p>
+        Better than default initialization for RL:
+      </p>
+      <pre><code>def init_weights(m):
+    if isinstance(m, nn.Linear):
+        nn.init.orthogonal_(m.weight, gain=np.sqrt(2))
+        nn.init.constant_(m.bias, 0.0)
+
+model.apply(init_weights)
+# Last layer should use smaller gain
+nn.init.orthogonal_(policy_head.weight, gain=0.01)</code></pre>
+
+      <h3>4.2 Layer Normalization</h3>
+      <p>
+        Add layer normalization after activations:
+      </p>
+      <pre><code>self.network = nn.Sequential(
+    nn.Linear(obs_dim, 256),
+    nn.Tanh(),
+    nn.LayerNorm(256),  # Critical for stability
+    nn.Linear(256, 256),
+    nn.Tanh(),
+    nn.LayerNorm(256),
+    nn.Linear(256, action_dim)
+)</code></pre>
+
+      <h3>4.3 Separate Value and Policy Networks</h3>
+      <div class="trick-box">
+        <strong>Trick:</strong> Don't share parameters between policy and value networks in continuous control. Value function gradients can destabilize policy learning.
+      </div>
+
+      <h2>5. Learning Rate Schedules</h2>
+
+      <h3>5.1 Learning Rate Annealing</h3>
+      <pre><code>def lr_schedule(progress):
+    """Linear decay"""
+    return initial_lr * (1 - progress)
+
+# Or use cosine annealing
+scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
+    optimizer, T_max=total_timesteps
+)</code></pre>
+
+      <h3>5.2 Warmup for Critic</h3>
+      <p>
+        Use higher learning rate for critic initially:
+      </p>
+      <pre><code>if timestep < warmup_steps:
+    critic_lr = base_lr * 3.0  # Higher initially
+else:
+    critic_lr = base_lr</code></pre>
+
+      <h2>6. Experience Replay and Sampling</h2>
+
+      <h3>6.1 Prioritized Experience Replay (DQN/SAC)</h3>
+      <pre><code>priorities = np.abs(td_errors) + 1e-6
+probs = priorities ** alpha / priorities.sum()
+indices = np.random.choice(len(buffer), batch_size, p=probs)
+
+# Apply importance sampling weights
+weights = (len(buffer) * probs[indices]) ** (-beta)
+weights /= weights.max()</code></pre>
+
+      <h3>6.2 Mini-batch Shuffling (PPO)</h3>
+      <pre><code># Shuffle indices for each epoch
+indices = np.arange(total_samples)
+for _ in range(n_epochs):
+    np.random.shuffle(indices)
+    for start in range(0, total_samples, batch_size):
+        batch_idx = indices[start:start + batch_size]
+        # Train on batch</code></pre>
+
+      <h2>7. Target Network Updates</h2>
+
+      <h3>7.1 Soft Updates (SAC/TD3)</h3>
+      <pre><code>def soft_update(target, source, tau=0.005):
+    for target_param, param in zip(
+        target.parameters(), source.parameters()
+    ):
+        target_param.data.copy_(
+            tau * param.data + (1 - tau) * target_param.data
+        )</code></pre>
+
+      <h3>7.2 Delayed Policy Updates (TD3)</h3>
+      <pre><code>if timestep % policy_delay == 0:
+    actor_loss = -critic(state, actor(state)).mean()
+    actor_optimizer.zero_grad()
+    actor_loss.backward()
+    actor_optimizer.step()</code></pre>
+
+      <h2>8. Exploration Strategies</h2>
+
+      <h3>8.1 Action Noise (DDPG/TD3)</h3>
+      <pre><code># Training noise
+action = policy(state) + np.random.normal(0, noise_std)
+action = np.clip(action, -max_action, max_action)
+
+# Decrease noise over time
+noise_std = max(min_noise, initial_noise * decay_rate)</code></pre>
+
+      <h3>8.2 Entropy Regularization</h3>
+      <pre><code>policy_loss = -(log_probs * advantages).mean() - \
+               entropy_coef * entropy.mean()
+
+# Adaptive entropy coefficient
+target_entropy = -np.prod(action_space.shape)
+log_alpha = torch.zeros(1, requires_grad=True)
+alpha_loss = -(log_alpha * (log_probs + target_entropy).detach()).mean()</code></pre>
+
+      <h2>9. Debugging and Monitoring</h2>
+
+      <h3>9.1 Key Metrics to Track</h3>
+      <pre><code>metrics = {
+    'episode_reward': np.mean(episode_rewards),
+    'value_loss': value_loss.item(),
+    'policy_loss': policy_loss.item(),
+    'entropy': entropy.mean().item(),
+    'kl_divergence': kl_div.item(),
+    'explained_variance': 1 - var(returns - values) / var(returns),
+    'gradient_norm': total_norm,
+    'learning_rate': optimizer.param_groups[0]['lr']
+}</code></pre>
+
+      <h3>9.2 Warning Signs</h3>
+      <ul>
+        <li>Explained variance < 0: Value function not learning</li>
+        <li>KL divergence > 0.1: Policy changing too fast</li>
+        <li>Gradient norm > 10: Exploding gradients</li>
+        <li>Entropy → 0: Policy becoming deterministic too early</li>
+      </ul>
+
+      <h2>10. Hyperparameter Guidelines</h2>
+
+      <h3>10.1 PPO Defaults</h3>
+      <pre><code>learning_rate = 3e-4
+n_steps = 2048
+batch_size = 64
+n_epochs = 10
+gamma = 0.99
+gae_lambda = 0.95
+clip_range = 0.2
+ent_coef = 0.0
+vf_coef = 0.5
+max_grad_norm = 0.5</code></pre>
+
+      <h3>10.2 SAC Defaults</h3>
+      <pre><code>learning_rate = 3e-4
+buffer_size = 1_000_000
+batch_size = 256
+gamma = 0.99
+tau = 0.005
+alpha = 0.2  # Entropy coefficient
+target_update_interval = 1</code></pre>
+
+      <h2>11. Summary: Stability Checklist</h2>
+      <ol>
+        <li>✓ Gradient clipping implemented</li>
+        <li>✓ Reward normalization or clipping</li>
+        <li>✓ Advantage normalization (PPO)</li>
+        <li>✓ Orthogonal weight initialization</li>
+        <li>✓ Layer normalization in networks</li>
+        <li>✓ Separate networks for actor/critic</li>
+        <li>✓ Learning rate scheduling</li>
+        <li>✓ Proper target network updates</li>
+        <li>✓ Monitoring key metrics (KL, entropy, explained variance)</li>
+        <li>✓ Action noise or entropy regularization</li>
+      </ol>
+
+      <h2>References</h2>
+      <ul>
+        <li>Schulman et al., "Proximal Policy Optimization Algorithms" (2017)</li>
+        <li>Fujimoto et al., "Addressing Function Approximation Error in Actor-Critic Methods" (2018)</li>
+        <li>Engstrom et al., "Implementation Matters in Deep RL" (2020)</li>
+        <li>OpenAI Spinning Up Documentation</li>
+      </ul>
+
+    </section>
+  </div>
+
+  <footer style="text-align:center;margin-top:20px; margin-bottom: 30px; color: #888;">
+    <p>&copy; 2025 Qunzhong Wang. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

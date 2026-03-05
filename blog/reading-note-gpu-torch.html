@@ -1,0 +1,396 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>GPU Architecture and PyTorch Internals - Qunzhong Wang</title>
+  <meta name="author" content="Qunzhong Wang">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="../images/profile_bright.jpeg" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: Verdana, Kaiti SC, Geneva, sans-serif;
+      margin: 0;
+      background-color: #f4f4f9;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    .top-nav {
+      background-color: #0d254c;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky; 
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-name {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 25px;
+      font-size: 1.1em;
+    }
+
+    .nav-links a:hover {
+      color: #a9cce3;
+    }
+
+    .main-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    .content-card {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 40px 60px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .back-link {
+      color: #0056b3;
+      text-decoration: none;
+      font-size: 0.95em;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      color: #0d254c;
+      margin-bottom: 10px;
+      border-bottom: 3px solid #0d254c;
+      padding-bottom: 15px;
+    }
+
+    .meta {
+      color: #888;
+      font-size: 0.95em;
+      margin-bottom: 30px;
+    }
+
+    .tags {
+      margin: 20px 0;
+    }
+
+    .tags span {
+      display: inline-block;
+      background-color: #0d254c;
+      color: white;
+      padding: 5px 12px;
+      border-radius: 3px;
+      font-size: 0.9em;
+      margin-right: 8px;
+    }
+
+    h2 {
+      font-size: 1.6em;
+      color: #0d254c;
+      margin-top: 35px;
+      margin-bottom: 15px;
+      border-left: 4px solid #0d254c;
+      padding-left: 15px;
+    }
+
+    h3 {
+      font-size: 1.3em;
+      color: #333;
+      margin-top: 25px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+
+    code {
+      background-color: #f5f5f5;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+      color: #d63384;
+    }
+
+    pre {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+      border-left: 4px solid #0d254c;
+    }
+
+    pre code {
+      background-color: transparent;
+      padding: 0;
+      color: #333;
+    }
+
+    ul, ol {
+      margin: 15px 0;
+      padding-left: 30px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .note-box {
+      background-color: #e3f2fd;
+      border-left: 4px solid #2196f3;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .content-card {
+        padding: 25px 20px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="top-nav">
+    <a href="../index.html" class="nav-name">Qunzhong Wang</a>
+    <nav class="nav-links">
+      <a href="../blog.html">← Back to Blog</a>
+    </nav>
+  </header>
+
+  <div class="main-container">
+    <section class="content-card">
+      <a href="../blog.html" class="back-link">← Back to Blog List</a>
+      
+      <h1>GPU Architecture and PyTorch Internals</h1>
+      
+      <div class="meta">
+        Published: January 2025 | Author: Qunzhong Wang
+      </div>
+
+      <div class="tags">
+        <span>GPU Architecture</span>
+        <span>PyTorch</span>
+        <span>Performance</span>
+        <span>Reading Notes</span>
+      </div>
+
+      <h2>1. GPU Architecture Fundamentals</h2>
+      <p>
+        Modern GPUs are massively parallel processors designed for high-throughput computation. Understanding their architecture is crucial for optimizing deep learning workloads.
+      </p>
+
+      <h3>1.1 Memory Hierarchy</h3>
+      <ul>
+        <li><strong>Global Memory (VRAM):</strong> Large capacity (~24-80GB) but high latency (~200-400 cycles)</li>
+        <li><strong>Shared Memory:</strong> On-chip memory shared within a thread block (~48-96KB per SM), very fast (~20 cycles)</li>
+        <li><strong>L1/L2 Cache:</strong> Automatic caching layer between global and SM</li>
+        <li><strong>Registers:</strong> Fastest memory, local to each thread</li>
+      </ul>
+
+      <div class="note-box">
+        <strong>Key Insight:</strong> Memory bandwidth is often the bottleneck, not compute capability. Efficient kernels minimize global memory access and maximize data reuse.
+      </div>
+
+      <h3>1.2 Streaming Multiprocessors (SMs)</h3>
+      <p>
+        GPUs consist of multiple SMs (e.g., 108 SMs on A100), each containing:
+      </p>
+      <ul>
+        <li>CUDA cores for FP32 operations</li>
+        <li>Tensor cores for mixed-precision matrix operations</li>
+        <li>Warp schedulers (groups of 32 threads)</li>
+        <li>Shared memory and L1 cache</li>
+      </ul>
+
+      <h3>1.3 Thread Hierarchy</h3>
+      <pre><code>Grid → Blocks → Warps (32 threads) → Threads</code></pre>
+      <p>
+        Threads within a warp execute in SIMT (Single Instruction, Multiple Thread) fashion. Branch divergence within a warp causes serialization.
+      </p>
+
+      <h2>2. PyTorch Kernel Implementation</h2>
+      <p>
+        PyTorch abstracts GPU programming through ATen (A Tensor library) and Dispatcher, but understanding the underlying mechanisms is valuable for optimization.
+      </p>
+
+      <h3>2.1 Tensor Representation</h3>
+      <pre><code>class Tensor {
+  Storage storage_;        // Underlying data buffer
+  int64_t storage_offset_; // Offset into storage
+  IntArrayRef sizes_;      // Shape [N, C, H, W]
+  IntArrayRef strides_;    // Memory layout
+  ...
+}</code></pre>
+
+      <h3>2.2 Dispatcher Mechanism</h3>
+      <p>
+        PyTorch's dispatcher routes operations to appropriate kernel implementations:
+      </p>
+      <ul>
+        <li><strong>CPU kernels:</strong> AVX/SIMD optimized implementations</li>
+        <li><strong>CUDA kernels:</strong> Custom CUDA or cuDNN/cuBLAS calls</li>
+        <li><strong>AutoGrad kernels:</strong> Gradient computation wrappers</li>
+      </ul>
+
+      <h3>2.3 Memory Management</h3>
+      <p>
+        PyTorch uses a caching allocator to reduce cudaMalloc overhead:
+      </p>
+      <pre><code># Memory pool maintains freed blocks
+torch.cuda.empty_cache()  # Release cached memory
+torch.cuda.memory_summary()  # View allocator stats</code></pre>
+
+      <h2>3. Kernel Optimization Techniques</h2>
+
+      <h3>3.1 Coalesced Memory Access</h3>
+      <p>
+        Threads in a warp should access consecutive memory addresses:
+      </p>
+      <pre><code>// Good: Coalesced
+for (int i = threadIdx.x; i < N; i += blockDim.x)
+    output[i] = input[i] * 2;
+
+// Bad: Strided access
+for (int i = threadIdx.x; i < N; i += blockDim.x)
+    output[i * stride] = input[i];</code></pre>
+
+      <h3>3.2 Shared Memory Tiling</h3>
+      <p>
+        Use shared memory to reduce global memory bandwidth:
+      </p>
+      <pre><code>__shared__ float tile[TILE_SIZE][TILE_SIZE];
+// Load data to shared memory
+tile[ty][tx] = A[row * N + col];
+__syncthreads();
+// Compute using shared memory
+for (int k = 0; k < TILE_SIZE; ++k)
+    sum += tile[ty][k] * B[k][tx];</code></pre>
+
+      <h3>3.3 Warp-Level Primitives</h3>
+      <p>
+        Leverage warp shuffle for efficient intra-warp communication:
+      </p>
+      <pre><code>// Warp reduction
+float val = /* ... */;
+for (int offset = 16; offset > 0; offset /= 2)
+    val += __shfl_down_sync(0xffffffff, val, offset);</code></pre>
+
+      <h2>4. PyTorch Performance Profiling</h2>
+
+      <h3>4.1 Using PyTorch Profiler</h3>
+      <pre><code>from torch.profiler import profile, ProfilerActivity
+
+with profile(activities=[ProfilerActivity.CPU, ProfilerActivity.CUDA]) as prof:
+    model(inputs)
+    
+print(prof.key_averages().table(sort_by="cuda_time_total"))</code></pre>
+
+      <h3>4.2 Kernel Launch Overhead</h3>
+      <p>
+        Kernel launches have ~5-10μs overhead. Fuse operations when possible:
+      </p>
+      <pre><code># Instead of
+y = x + 1
+z = y * 2
+
+# Use
+z = (x + 1) * 2  # Single kernel with JIT fusion</code></pre>
+
+      <h3>4.3 TorchScript and JIT</h3>
+      <p>
+        Use <code>torch.jit.script</code> to fuse operations and eliminate Python overhead:
+      </p>
+      <pre><code>@torch.jit.script
+def fused_gelu(x):
+    return 0.5 * x * (1.0 + torch.tanh(
+        0.7978845608 * (x + 0.044715 * x * x * x)))</code></pre>
+
+      <h2>5. Advanced Topics</h2>
+
+      <h3>5.1 Mixed Precision Training</h3>
+      <p>
+        Tensor cores provide 8x speedup for FP16 matrix operations:
+      </p>
+      <pre><code>from torch.cuda.amp import autocast, GradScaler
+
+scaler = GradScaler()
+with autocast():
+    output = model(input)
+    loss = criterion(output, target)
+scaler.scale(loss).backward()
+scaler.step(optimizer)</code></pre>
+
+      <h3>5.2 Custom CUDA Extensions</h3>
+      <p>
+        Write custom kernels for specialized operations:
+      </p>
+      <pre><code>from torch.utils.cpp_extension import load
+
+cuda_module = load(
+    name='custom_kernel',
+    sources=['kernel.cu', 'binding.cpp'],
+    verbose=True
+)</code></pre>
+
+      <h2>6. Practical Guidelines</h2>
+      <ol>
+        <li><strong>Batch Size:</strong> Larger batches better utilize GPU parallelism (aim for 80%+ utilization)</li>
+        <li><strong>Data Loading:</strong> Use <code>num_workers > 0</code> and <code>pin_memory=True</code></li>
+        <li><strong>Gradient Accumulation:</strong> Simulate large batch sizes without OOM</li>
+        <li><strong>Async Operations:</strong> Overlap CPU/GPU work with <code>non_blocking=True</code></li>
+        <li><strong>Avoid CPU-GPU Sync:</strong> Minimize <code>.item()</code> or <code>.cpu()</code> calls in training loop</li>
+      </ol>
+
+      <h2>7. Summary</h2>
+      <p>
+        Efficient GPU utilization requires understanding both hardware architecture and software abstractions. Key principles:
+      </p>
+      <ul>
+        <li>Maximize memory bandwidth utilization through coalesced access</li>
+        <li>Leverage memory hierarchy (shared memory, registers)</li>
+        <li>Minimize kernel launch overhead through operation fusion</li>
+        <li>Profile and identify bottlenecks systematically</li>
+      </ul>
+
+      <h2>References</h2>
+      <ul>
+        <li>NVIDIA CUDA Programming Guide</li>
+        <li>PyTorch Internals Documentation</li>
+        <li>Huang et al., "Demystifying GPU Microarchitecture"</li>
+      </ul>
+
+    </section>
+  </div>
+
+  <footer style="text-align:center;margin-top:20px; margin-bottom: 30px; color: #888;">
+    <p>&copy; 2025 Qunzhong Wang. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

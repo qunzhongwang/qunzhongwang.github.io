@@ -1,0 +1,136 @@
+/* Custom overrides for Qunzhong Wang's homepage */
+
+/* Widen profile card so name & university stay on one line */
+#profile-namecard.profile-wrapper {
+  width: 800px;
+  position: relative;
+  z-index: 5;
+}
+
+#my-name,
+#my-title {
+  white-space: nowrap;
+}
+
+/* Shorter profile card: reduce padding */
+#profile-namecard .profile-col {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+/* Social media centered under name/school, ensure clickable */
+.social-media {
+  text-align: center;
+  margin-top: 8px;
+  position: relative;
+  z-index: 10;
+}
+.social-media .icon-button {
+  position: relative;
+  z-index: 11;
+  pointer-events: auto;
+}
+
+/* Shorter cover section */
+.cover {
+  height: 260px;
+}
+@media screen and (max-width: 600px) {
+  .cover {
+    height: 340px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #profile-namecard.profile-wrapper {
+    width: calc(90% - 30px);
+  }
+  #my-name,
+  #my-title {
+    white-space: normal;
+  }
+}
+
+/* Publication domain filters */
+.pub-filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.pub-filter-btn {
+  padding: 6px 14px;
+  border: 1px solid #9b3022;
+  background: white;
+  color: #9b3022;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: all 0.2s;
+}
+.pub-filter-btn:hover,
+.pub-filter-btn.active {
+  background: #9b3022;
+  color: white;
+}
+
+/* Publications: vertical stacking (up to down) */
+.pub-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.pub-slider .pub.hidden {
+  display: none !important;
+}
+
+/* Awards: confined scrollable window (like News) */
+.awards-container {
+  max-height: 280px;
+  overflow-y: auto;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+.awards-container::-webkit-scrollbar {
+  width: 6px;
+}
+.awards-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+.awards-container::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+.awards-container::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+/* Education icons: consistent sizing, CUHK thicker/bolder */
+.edu-icon {
+  width: 100%;
+  max-width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+.edu-icon-cuhk {
+  filter: contrast(1) drop-shadow(0 0 0.5px rgba(0,0,0,0.4));
+  min-width: 80px;
+}
+
+/* Timeline CUHK icon: make wider (shield is tall/narrow) */
+.timeline-icon-cuhk {
+  width: 52px;
+  height: auto;
+  max-height: 48px;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Education table alignment */
+table .edu-icon {
+  display: block;
+  margin: 0 auto;
+}
