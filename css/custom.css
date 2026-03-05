@@ -89,6 +89,36 @@
   display: none !important;
 }
 
+/* Publications: confined scrollable window (like Awards) */
+.pub-container {
+  max-height: 800px;
+  overflow-y: auto;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+.pub-container::-webkit-scrollbar {
+  width: 6px;
+}
+.pub-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+.pub-container::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+.pub-container::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+/* Space between Publications and Awards */
+#awards.awards {
+  margin-top: 35px;
+}
+
 /* Awards: confined scrollable window (like News) */
 .awards-container {
   max-height: 280px;

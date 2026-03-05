@@ -320,13 +320,15 @@
 
   <div class="pub-filters" style="margin-top: 15px; margin-bottom: 15px;">
     <button class="pub-filter-btn active" data-filter="all">All</button>
+    <button class="pub-filter-btn" data-filter="selected">Core Contribution</button>
     <button class="pub-filter-btn" data-filter="vlm">VLM</button>
     <button class="pub-filter-btn" data-filter="rl">RL</button>
     <button class="pub-filter-btn" data-filter="theory">Theory</button>
   </div>
 
+  <div class="pub-container">
   <div class="pub-list pub-slider" style="margin-top: 30px;">
-    <div class="pub" data-selected="true" data-domain="vlm rl">
+    <div class="pub" data-selected="true" data-domain="vlm rl selected">
       <div class="pub-left">
         <img class="intro-img frame" src="images/optiks_teaser.png" alt="Optik" onerror="this.src='images/prompt_theory_curly.png'">
       </div>
@@ -353,7 +355,7 @@
       </div>
     </div>
 
-    <div class="pub" data-selected="true" data-domain="vlm rl">
+    <div class="pub" data-selected="true" data-domain="vlm rl selected">
       <div class="pub-left">
         <img class="intro-img frame" src="images/talk_thinking_with_image_logo.png" alt="VR-Thinker">
       </div>
@@ -408,7 +410,7 @@
       </div>
     </div>
 
-    <div class="pub" data-selected="true" data-domain="theory">
+    <div class="pub" data-selected="true" data-domain="theory selected">
       <div class="pub-left">
         <img class="intro-img frame" src="images/prompt_theory_curly.png" alt="Graph Prompt">
       </div>
@@ -437,6 +439,7 @@
       </div>
     </div>
 
+  </div>
   </div>
 </div>
 
