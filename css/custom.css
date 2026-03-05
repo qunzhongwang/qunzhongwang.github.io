@@ -51,6 +51,12 @@
   }
 }
 
+/* Publication teaser images: 95% fill in the frame box */
+.pub-left > .intro-img.frame {
+  box-sizing: border-box;
+  padding: 0.5%;
+}
+
 /* Publication domain filters */
 .pub-filters {
   display: flex;
@@ -106,6 +112,16 @@
 }
 .awards-container::-webkit-scrollbar-thumb:hover {
   background: #aaa;
+}
+
+/* Pinned CMO award row */
+.award-pinned {
+  /* background: linear-gradient(90deg, rgba(155, 48, 34, 0.18) 0%, rgba(155, 48, 34, 0.06) 50%, transparent 100%); */
+  border-left: 3px solid rgba(155, 48, 34, 0.5);
+}
+.award-pinned td {
+  padding-top: 6px !important;
+  padding-bottom: 10px !important;
 }
 
 /* Education icons: consistent sizing, CUHK thicker/bolder */
