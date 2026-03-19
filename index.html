@@ -1,464 +1,795 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css"
+    />
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Qunzhong Wang</title>
+    <meta
+      name="description"
+      lang="en"
+      content="Academic website for Qunzhong Wang"
+    />
+    <meta
+      name="keywords"
+      lang="en"
+      content="Qunzhong Wang, CUHK, Machine Learning, AI"
+    />
 
-  <title>Qunzhong Wang</title>
-  <meta name="description" lang="en" content="Academic website for Qunzhong Wang">
-  <meta name="keywords" lang="en" content="Qunzhong Wang, CUHK, Machine Learning, AI" />
+    <link
+      rel="shortcut icon"
+      href="images/profile_bright.jpeg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+    />
 
-  <link rel="shortcut icon" href="images/profile_bright.jpeg" type="image/x-icon">
-  <link rel="stylesheet" href="main.css">
-  <link rel="stylesheet" href="css/custom.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
-  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <style>
+      li.indented {
+        position: relative;
+        padding-left: 90px;
+      }
+      li.indented::before {
+        content: attr(data-date);
+        position: absolute;
+        left: 0;
+        top: 0;
+        white-space: nowrap;
+      }
+    </style>
+  </head>
 
-  <style>
-    li.indented { position: relative; padding-left: 90px; }
-    li.indented::before { content: attr(data-date); position: absolute; left: 0; top: 0; white-space: nowrap; }
-  </style>
-
-</head>
-
-<body>
-
+  <body>
     <header class="site-header">
-  <div class="wrapper">
-<nav class="site-nav">
-  <a href="#" class="menu-icon">
-    <svg viewBox="0 0 18 15">
-      <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
-      <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
-      <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
-    </svg>
-  </a>
-
-  <div class="trigger">
-    <a class="page-link" href="#bio"><b>Biography</b></a>
-    <a class="page-link" href="#timeline"><b>Experiences</b></a>
-    <a class="page-link" href="#publications"><b>Publications</b></a>
-    <a class="page-link" href="#awards"><b>Honors & Awards</b></a>
-    <a class="page-link" href="#services"><b>Services</b></a>
-    <!-- <a class="page-link" href="#talks"><b>Talks</b></a> -->
-    <!-- <a class="page-link" href="blog.html"><b>Blog</b></a> -->
-  </div>
-</nav>
-  </div>
-</header>
-
-  <div id="profile-cover" class="cover shallow-bg img-responsive">
-    <div id="profile-namecard" class="profile-wrapper wrapper-light">
-      <div id="my-pic" class="profile-col profile-col-1">
-        <img id="profile-avatar" src="images/profile_bright.jpeg" alt="Qunzhong Wang" class="circle-img border-dark"/>
-      </div>
-      <div id="my-contact" class="profile-col profile-col-2">
-        <div id="my-name" class="text-grey-dark">
-          Qunzhong Wang (王群中)<br>
-        </div>
-        <div id="my-title" class="text-grey">
-          Undergraduate, The Chinese University of Hong Kong
-        </div>
-        <div id="my-email" class="text-grey-light">
-          <i class="fa fa-envelope" style="margin-right: 6px;"></i>
-          <a href="mailto:qunzhong@link.cuhk.edu.hk" style="color: inherit; text-decoration: none;">qunzhong [at] link [dot] cuhk [dot] edu [dot] hk</a>
-        </div>
-        <div class="social-media">
-          <a href="https://scholar.google.com/citations?hl=zh-CN&view_op=list_works&user=B4uel0wAAAAJ" target="_blank" class="icon-button google-scholar-btn">
-            <i class="ai ai-google-scholar icon-scholar"></i>
-            <span></span>
+      <div class="wrapper">
+        <nav class="site-nav">
+          <a href="#" class="menu-icon">
+            <svg viewBox="0 0 18 15">
+              <path
+                fill="#424242"
+                d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"
+              />
+              <path
+                fill="#424242"
+                d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"
+              />
+              <path
+                fill="#424242"
+                d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"
+              />
+            </svg>
           </a>
-          <a href="https://github.com/qunzhongwang" target="_blank" class="icon-button github">
-            <i class="fa-brands fa-github icon-github"></i>
-            <span></span>
-          </a>
-          <a href="https://www.linkedin.com/in/qunzhong-wang-904aa02b7" target="_blank" class="icon-button linkedin">
-            <i class="fa-brands fa-linkedin icon-linkedin"></i>
-            <span></span>
-          </a>
-          <a href="https://x.com/qunzhongwang" target="_blank" class="icon-button twitter">
-            <i class="fa-brands fa-x-twitter icon-twitter"></i>
-            <span></span>
-          </a>
+
+          <div class="trigger">
+            <a class="page-link" href="#bio"><b>Biography</b></a>
+            <a class="page-link" href="#timeline"><b>Experiences</b></a>
+            <a class="page-link" href="#publications"><b>Publications</b></a>
+            <a class="page-link" href="#awards"><b>Honors & Awards</b></a>
+            <a class="page-link" href="#services"><b>Services</b></a>
+            <!-- <a class="page-link" href="#talks"><b>Talks</b></a> -->
+            <!-- <a class="page-link" href="blog.html"><b>Blog</b></a> -->
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div id="profile-cover" class="cover shallow-bg img-responsive">
+      <div id="profile-namecard" class="profile-wrapper wrapper-light">
+        <div id="my-pic" class="profile-col profile-col-1">
+          <img
+            id="profile-avatar"
+            src="images/profile_bright.jpeg"
+            alt="Qunzhong Wang"
+            class="circle-img border-dark"
+          />
         </div>
-      </div>
-    </div>
-  </div>
-
-<div class="page-content">
-<div class="wrapper">
-<div id="bio" class="bio">
-
-  <h1 class="md-heading text-left">
-    <i class="fa fa-id-card" aria-hidden="true"></i>
-    About
-  </h1>
-  <div class="bio-body" style="overflow:hidden;">
-
-    <p class="bio-para">
-      Hi! I'm Qunzhong Wang. I am currently an undergraduate at the <a href="https://www.cuhk.edu.hk/">Chinese University of Hong Kong</a>, majoring in <a href="https://www.ie.cuhk.edu.hk/programmes/bsc-in-mieg/">Mathematics and Information Engineering</a>.
-    </p>
-
-    <p class="bio-para">
-      Prior to my undergraduate studies, I received the <b><a href="https://en.wikipedia.org/wiki/Chinese_Mathematical_Olympiad" target="_blank">gold medal in Chinese Mathematical Olympiad (CMO)</a></b>.
-    </p>
-
-    <p class="bio-para">
-      My current research interests include:
-      <b>Principles of AI Systems backed by Math</b> — understanding representation capacity, training dynamics, and generalization; designing better architectures, optimizers, and regularization.
-      <b>Reinforcement Learning on Large Models</b> — aligning LLMs, VLMs, and Agents via RLHF/RLVR; robust fine-tuning within the RL framework.
-    </p>
-
-    <p class="bio-para">
-      I feel incredibly fortunate to have been advised by: <a href="https://www.se.cuhk.edu.hk/people/academic-staff/prof-cheng-hong/">Hong Cheng</a>, <a href="https://xyue.io/">Xiangyu Yue</a>, <a href="https://www.turing.ac.uk/people/researchers/sotirios-sabanis">Sotirios Sabanis</a>, <a href="https://liuzhuang13.github.io/">Zhuang Liu</a>.
-    </p>
-
-    <p class="bio-para">
-      You can view my resume here:
-      <a href="cv/Qunzhong_WANG_CV-0313.pdf" target="_blank" class="resume-btn" style="color: #b31b1b;">
-        <i class="fa fa-file-pdf" aria-hidden="true"></i>
-        Full Resume
-      </a>
-    </p>
-
-    <p class="bio-para phd-seek">
-      <b style="color: #b31b1b;">I am actively seeking 2027 Fall PhD opportunities!</b>
-    </p>
-
-</div>
-</div>
-
-<div style="margin-top: 25px; margin-bottom: 25px;">
-  <h3 class="md-heading text-left" style="margin-bottom: 15px;">
-    <i class="fa fa-newspaper-o" aria-hidden="true"></i> News
-  </h3>
-
-  <div class="news-container">
-
-    <div class="news-item">
-      <div class="news-date">Mar, 2026</div>
-      <div class="news-content">
-        🚀 <b>[Release]</b> We are happy to release <b>Vero</b>: Open Thinking Recipes for Visual Reinforcement Learning. <a href="/pre-release/Open_RL_Recipe_for_VLMs_local.pdf" target="_blank">[arXiv]</a> <a href="/pre-release/Open_RL_Recipe_for_VLMs_local.pdf" target="_blank">[Paper]</a> <a href="#" target="_blank">[Code]</a>
-      </div>
-    </div>
-
-    <div class="news-item">
-      <div class="news-date">Dec, 2025</div>
-      <div class="news-content">
-        🎤 <b>[Talk]</b> Presented <b>Thinking with Images</b> at Kuaishou Technology Research Seminar.
-      </div>
-    </div>
-
-    <div class="news-item">
-      <div class="news-date">Oct, 2025</div>
-      <div class="news-content">
-        🚀 <b>[Release]</b> We are happy to release <b>VR-Thinker</b>: Boosting Multimodal Reward Models through Thinking-with-Image Reasoning. <a href="https://arxiv.org/abs/2510.10518" target="_blank">[Paper]</a> <a href="https://arxiv.org/abs/2510.10518" target="_blank">[arXiv]</a> <a href="https://github.com/qunzhongwang/vr-thinker" target="_blank">[Code]</a>
-      </div>
-    </div>
-
-    <div class="news-item">
-      <div class="news-date">Sep, 2025</div>
-      <div class="news-content">
-        🔬 <b>[Visit]</b> Joined <a href="https://liuzhuang13.github.io/#ResearchGroup" target="_blank">Zhuang's Lab</a> at Princeton University, advised by <a href="https://liuzhuang13.github.io/" target="_blank">Prof. Zhuang Liu</a>.
-      </div>
-    </div>
-
-    <div class="news-item">
-      <div class="news-date">Sep, 2025</div>
-      <div class="news-content">
-        🔬 <b>[Visit]</b> Conducted a 2-month internship at <a href="#" target="_blank">Alan Turing Institute</a>, advised by <a href="https://liuzhuang13.github.io/" target="_blank">Prof. Sotirios Sabanis</a>.
-      </div>
-    </div>
-
-    <div class="news-item">
-      <div class="news-date">Jul, 2025</div>
-      <div class="news-content">
-        🎉 <b>[ICML 2025]</b> Our paper <b>Does Graph Prompt Work</b> has been accepted to ICML 2025!
-      </div>
-    </div>
-
-    <div class="news-item">
-      <div class="news-date">Dec, 2024</div>
-      <div class="news-content">
-        🔬 <b>[Internship]</b> Started at <a href="https://app.klingai.com/global/">Kling AI</a>, Kuaishou Technology, advised by Dr. <a href="https://xinntao.github.io/">Xintao Wang</a>.
-      </div>
-    </div>
-
-    <div class="news-item">
-      <div class="news-date">Apr, 2024</div>
-      <div class="news-content">
-        🔬 <b>[Visit]</b> Joined <a href="https://dbgroup.se.cuhk.edu.hk/">Database Research Group</a> at CUHK, advised by <a href="https://www.se.cuhk.edu.hk/people/academic-staff/prof-cheng-hong/">Prof. Hong Cheng</a>.
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-  <tbody>
-    <tr>
-      <td colspan="2" style="padding:20px 0px 10px 0px;">
-        <h2 style="margin-bottom: 0px;">
-          <i class="fa fa-graduation-cap" aria-hidden="true"></i> Education
-        </h2>
-      </td>
-    </tr>
-
-    <tr>
-      <td style="padding:10px; width:20%; vertical-align:middle; text-align:center;">
-        <img src="images/icons/internship_cuhk.png" alt="CUHK" class="edu-icon edu-icon-cuhk">
-      </td>
-      <td style="padding:10px; width:80%; vertical-align:middle;">
-        <a href="https://www.cuhk.edu.hk/" target="_blank" style="font-size: 1.2em; font-weight: bold; color: #2a7ae2; text-decoration: none;">
-          The Chinese University of Hong Kong
-        </a>
-        <br>
-        <span style="font-size: 1em; font-weight: 500;">
-          Double Major in Mathematics and Information Engineering
-        </span>
-        <br>
-        <span class="edu-badges">
-          <span class="gpa-badge">GPA: 3.927 / 4.000</span>
-          <span class="rank-badge">Rank: 1</span>
-          <a href="cv/CU_TS_UG_ENG.pdf" target="_blank" class="transcript-badge">
-            <i class="fa fa-file-alt" aria-hidden="true"></i> Transcript
-          </a>
-        </span>
-        <br>
-        <span style="display: flex; justify-content: space-between; color: #666; font-size: 0.9em;">
-          <span>Hong Kong, China</span>
-          <span>Sep 2023 – Jul 2027 (expected)</span>
-        </span>
-        <br>
-        <span style="font-size: 0.9em; font-style: italic; color: #555;">
-          ELITE Stream, Dean's List
-        </span>
-      </td>
-    </tr>
-    <tr>
-      <td style="padding:10px; width:20%; vertical-align:middle; text-align:center;">
-        <img src="images/icons/education_uw.png" alt="UW" class="edu-icon">
-      </td>
-      <td style="padding:10px; width:80%; vertical-align:middle;">
-        <a href="https://www.washington.edu/" target="_blank" style="font-size: 1.2em; font-weight: bold; color: #2a7ae2; text-decoration: none;">
-          University of Washington
-        </a>
-        <br>
-        <span style="font-size: 1em; font-weight: 500;">
-          Exchange Program in Computer Science and Engineering
-        </span>
-        <br>
-        <span class="edu-badges">
-          <span class="gpa-badge">GPA: 4.000 / 4.000</span>
-          <a href="cv/UW_Transcript.pdf" target="_blank" class="transcript-badge">
-            <i class="fa fa-file-alt" aria-hidden="true"></i> Transcript
-          </a>
-        </span>
-        <br>
-        <span style="display: flex; justify-content: space-between; color: #666; font-size: 0.9em;">
-          <span>Seattle, United States</span>
-          <span>Sep 2025 – Dec 2025</span>
-        </span>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<div id="timeline" class="timeline-brief">
-  <h1 class="md-heading text-left">
-    <i class="fa fa-chart-line" aria-hidden="true"></i>
-    Experiences
-  </h1>
-
-  <div class="timeline-body">
-
-    <div class="timeline-item">
-      <div class="timeline-date">
-        <img class="social-icon" src="images/icons/internship_pton.svg" style="max-width:40px;"/>
-        2025.09 - Present
-      </div>
-      <div class="timeline-title">
-        Research Intern @ <a href="https://liuzhuang13.github.io/#ResearchGroup" target="_blank">Zhuang's Lab</a>, Princeton University
-      </div>
-      <div class="timeline-desc">
-        <div class="timeline-host">
-          Advisor: <a href="https://liuzhuang13.github.io/" target="_blank">Prof. Zhuang Liu</a>
+        <div id="my-contact" class="profile-col profile-col-2">
+          <div id="my-name" class="text-grey-dark">
+            Qunzhong Wang (王群中)<br />
+          </div>
+          <div id="my-title" class="text-grey">
+            Undergraduate, The Chinese University of Hong Kong
+          </div>
+          <div id="my-email" class="text-grey-light">
+            <i class="fa fa-envelope" style="margin-right: 6px"></i>
+            <a
+              href="mailto:qunzhong@link.cuhk.edu.hk"
+              style="color: inherit; text-decoration: none"
+              >qunzhong [at] link [dot] cuhk [dot] edu [dot] hk</a
+            >
+          </div>
+          <div class="social-media">
+            <a
+              href="https://scholar.google.com/citations?hl=zh-CN&view_op=list_works&user=B4uel0wAAAAJ"
+              target="_blank"
+              class="icon-button google-scholar-btn"
+            >
+              <i class="ai ai-google-scholar icon-scholar"></i>
+              <span></span>
+            </a>
+            <a
+              href="https://github.com/qunzhongwang"
+              target="_blank"
+              class="icon-button github"
+            >
+              <i class="fa-brands fa-github icon-github"></i>
+              <span></span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/qunzhong-wang-904aa02b7"
+              target="_blank"
+              class="icon-button linkedin"
+            >
+              <i class="fa-brands fa-linkedin icon-linkedin"></i>
+              <span></span>
+            </a>
+            <a
+              href="https://x.com/qunzhongwang"
+              target="_blank"
+              class="icon-button twitter"
+            >
+              <i class="fa-brands fa-x-twitter icon-twitter"></i>
+              <span></span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="timeline-item">
-      <div class="timeline-date">
-        <img class="social-icon" src="images/icons/internship_kling.jpeg" style="max-width:40px;"/>
-        2024.12 - 2025.09
-      </div>
-      <div class="timeline-title">
-        Research Intern @ <a href="https://app.klingai.com/global/" target="_blank">Kling AI</a>, Kuaishou Technology
-      </div>
-      <div class="timeline-desc">
-        <div class="timeline-host">
-          Advisor: <a href="https://xinntao.github.io/" target="_blank">Dr. Xintao Wang</a>
-        </div>
-      </div>
-    </div>
+    <div class="page-content">
+      <div class="wrapper">
+        <div id="bio" class="bio">
+          <h1 class="md-heading text-left">
+            <i class="fa fa-id-card" aria-hidden="true"></i>
+            About
+          </h1>
+          <div class="bio-body" style="overflow: hidden">
+            <p class="bio-para">
+              Hi! I'm Qunzhong Wang. I am currently an undergraduate at the
+              <a href="https://www.cuhk.edu.hk/"
+                >Chinese University of Hong Kong</a
+              >, majoring in
+              <a href="https://www.ie.cuhk.edu.hk/programmes/bsc-in-mieg/"
+                >Mathematics and Information Engineering</a
+              >.
+            </p>
 
-    <div class="timeline-item">
-      <div class="timeline-date">
-        <img class="social-icon timeline-icon-cuhk" src="images/icons/internship_cuhk.png"/>
-        2024.04 - 2024.09
-      </div>
-      <div class="timeline-title">
-        Research Assistant @ <a href="https://dbgroup.se.cuhk.edu.hk/" target="_blank">Database Research Group</a>, CUHK
-      </div>
-      <div class="timeline-desc">
-        <div class="timeline-host">
-          Advisor: <a href="https://www.se.cuhk.edu.hk/people/academic-staff/prof-cheng-hong/" target="_blank">Prof. Hong Cheng</a>
-        </div>
-      </div>
-    </div>
+            <p class="bio-para">
+              Prior to my undergraduate studies, I received the
+              <b
+                ><a
+                  href="https://en.wikipedia.org/wiki/Chinese_Mathematical_Olympiad"
+                  target="_blank"
+                  >gold medal in Chinese Mathematical Olympiad (CMO)</a
+                ></b
+              >.
+            </p>
 
-  </div>
-</div>
+            <p class="bio-para">
+              My current research interests include:
+              <b>Principles of AI Systems backed by Math</b> — understanding
+              representation capacity, training dynamics, and generalization;
+              designing better architectures, optimizers, and regularization.
+              <b>Reinforcement Learning on Large Models</b> — aligning LLMs,
+              VLMs, and Agents via RLHF/RLVR; robust fine-tuning within the RL
+              framework.
+            </p>
 
-<div id="publications" class="publications">
-  <h1 class="md-heading text-left">
-    <i class="fa fa-file" aria-hidden="true"></i>
-    Publications
-  </h1>
+            <p class="bio-para">
+              I feel incredibly fortunate to have been advised by:
+              <a
+                href="https://www.se.cuhk.edu.hk/people/academic-staff/prof-cheng-hong/"
+                >Hong Cheng</a
+              >, <a href="https://xyue.io/">Xiangyu Yue</a>,
+              <a
+                href="https://www.turing.ac.uk/people/researchers/sotirios-sabanis"
+                >Sotirios Sabanis</a
+              >, <a href="https://liuzhuang13.github.io/">Zhuang Liu</a>.
+            </p>
 
-  <div class="pub-filters" style="margin-top: 15px; margin-bottom: 15px;">
-    <button class="pub-filter-btn active" data-filter="all">All</button>
-    <button class="pub-filter-btn" data-filter="selected">Core Contribution</button>
-    <button class="pub-filter-btn" data-filter="vlm">VLM</button>
-    <button class="pub-filter-btn" data-filter="rl">RL</button>
-    <button class="pub-filter-btn" data-filter="theory">Theory</button>
-  </div>
+            <p class="bio-para">
+              You can view my resume here:
+              <a
+                href="cv/Qunzhong_WANG_CV-0313.pdf"
+                target="_blank"
+                class="resume-btn"
+                style="color: #b31b1b"
+              >
+                <i class="fa fa-file-pdf" aria-hidden="true"></i>
+                Full Resume
+              </a>
+            </p>
 
-  <div class="pub-container">
-  <div class="pub-list pub-slider" style="margin-top: 30px;">
-    <div class="pub" data-selected="true" data-domain="vlm rl selected">
-      <div class="pub-left">
-        <img class="intro-img frame" src="images/optiks_teaser.png" alt="Vero">
-      </div>
-      <div class="pub-right">
-        <div class="title">
-          Vero: Open Thinking Recipes for Visual Reinforcement Learning
+            <p class="bio-para phd-seek">
+              <b style="color: #b31b1b"
+                >I am actively seeking 2027 Fall PhD opportunities!</b
+              >
+            </p>
+          </div>
         </div>
-        <div class="authors">
-          Gabriel Sarch, Linrong Cai, <b style="color: #b31b1b;">Qunzhong Wang</b>, Haoyang Wu, Danqi Chen, Zhuang Liu
-        </div>
-        <div class="publish">
-          <span class="place">Preprint</span>
-        </div>
-        <div style="font-size: 0.95em;">
-            <a href="/pre-release/Open_RL_Recipe_for_VLMs_local.pdf" style="color: #b31b1b;"><i class="ai ai-arxiv"></i> arXiv</a>
-            <span style="margin:0 2px; color:#ccc;">/</span>
-            <a href="/pre-release/Open_RL_Recipe_for_VLMs_local.pdf" style="color: #b31b1b;"><i class="fas fa-file-pdf"></i> Paper</a>
-            <span style="margin:0 2px; color:#ccc;">/</span>
-            <a href="#" style="color: #b31b1b;"><i class="fa-brands fa-github"></i> Code</a>
-        </div>
-        <p style="margin-top:4px; margin-bottom:6px; color:#666;">
-          Open thinking recipes for visual reinforcement learning.
-        </p>
-      </div>
-    </div>
 
-    <div class="pub" data-selected="true" data-domain="vlm rl selected">
-      <div class="pub-left">
-        <img class="intro-img frame" src="images/talk_thinking_with_image_logo.png" alt="VR-Thinker">
-      </div>
-      <div class="pub-right">
-        <div class="title">
-          VR-Thinker: Boosting Multimodal Reward Models through Thinking-with-Image Reasoning
-        </div>
-        <div class="authors">
-          <b style="color: #b31b1b;">Qunzhong Wang</b>,
-          Jie Liu, Jiajun Liang, Yilei Jiang, Yuanxing Zhang, Yaozhi Zheng, Xintao Wang, Pengfei Wan, Xiangyu Yue, Jiaheng Liu
-        </div>
-        <div class="publish">
-          <span class="place">Preprint</span>
-        </div>
-        <div style="font-size: 0.95em;">
-            <a href="https://arxiv.org/abs/2510.10518" style="color: #b31b1b;"><i class="ai ai-arxiv"></i> arXiv</a>
-            <span style="margin:0 2px; color:#ccc;">/</span>
-            <a href="https://huggingface.co/papers/2510.10518" style="color: #b31b1b;"><i class="fas fa-file-pdf"></i> Paper</a>
-            <span style="margin:0 2px; color:#ccc;">/</span>
-            <a href="https://github.com/qunzhongwang/vr-thinker" style="color: #b31b1b;"><i class="fab fa-github"></i> Code</a>
-        </div>
-        <p style="margin-top:4px; margin-bottom:6px; color:#666;">
-          Boosting multimodal reward models by adding tool invocation capabilities to handle long videos.
-        </p>
-      </div>
-    </div>
+        <div style="margin-top: 25px; margin-bottom: 25px">
+          <h3 class="md-heading text-left" style="margin-bottom: 15px">
+            <i class="fa fa-newspaper-o" aria-hidden="true"></i> News
+          </h3>
 
-    <div class="pub" data-selected="true" data-domain="vlm">
-      <div class="pub-left">
-        <img class="intro-img frame" src="images/teaser_screencoder.jpg" alt="ScreenCoder">
-      </div>
-      <div class="pub-right">
-        <div class="title">
-          ScreenCoder: Advancing Visual-to-Code Generation for Front-End Automation via Modular Multimodal Agents
-        </div>
-        <div class="authors">
-          Yilei Jiang, Yaozhi Zheng, Yuxuan Wan, <b style="color: #b31b1b;">Qunzhong Wang</b>, Jiaming Han, Michael R. Lyu, Xiangyu Yue
-        </div>
-        <div class="publish">
-          <span class="place">Preprint</span>
-        </div>
-        <div style="font-size: 0.95em;">
-            <a href="https://arxiv.org/abs/2507.22827" style="color: #b31b1b;"><i class="ai ai-arxiv"></i> arXiv</a>
-            <span style="margin:0 2px; color:#ccc;">/</span>
-            <a href="https://huggingface.co/papers/2507.22827" style="color: #b31b1b;"><i class="fas fa-file-pdf"></i> Paper</a>
-            <span style="margin:0 2px; color:#ccc;">/</span>
-            <a href="https://github.com/leigest519/ScreenCoder" style="color: #b31b1b;"><i class="fab fa-github"></i> Code</a>
-        </div>
-        <p style="margin-top:4px; margin-bottom:6px; color:#666;">
-          End-to-end visual-to-code generation via modular multimodal agents.
-        </p>
-      </div>
-    </div>
+          <div class="news-container">
+            <div class="news-item">
+              <div class="news-date">Mar, 2026</div>
+              <div class="news-content">
+                🚀 <b>[Release]</b> We are happy to release <b>Vero</b>: Open
+                Thinking Recipes for Visual Reinforcement Learning.
+                <a
+                  href="/pre-release/Open_RL_Recipe_for_VLMs_local.pdf"
+                  target="_blank"
+                  >[arXiv]</a
+                >
+                <a
+                  href="/pre-release/Open_RL_Recipe_for_VLMs_local.pdf"
+                  target="_blank"
+                  >[Paper]</a
+                >
+                <a href="#" target="_blank">[Code]</a>
+              </div>
+            </div>
 
-    <div class="pub" data-selected="true" data-domain="theory selected">
-      <div class="pub-left">
-        <img class="intro-img frame" src="images/prompt_theory_curly.png" alt="Graph Prompt">
-      </div>
-      <div class="pub-right">
-        <div class="title">
-          Does Graph Prompt Work? A Data Operation Perspective with Theoretical Analysis
-        </div>
-        <div class="authors">
-          <b style="color: #b31b1b;">Qunzhong Wang</b>,
-          Xiangguo Sun,
-          Hong Cheng
-        </div>
-        <div class="publish">
-          <span class="place">ICML 2025</span>
-        </div>
-        <div style="font-size: 0.95em;">
-            <a href="https://arxiv.org/abs/2410.01635" style="color: #b31b1b;"><i class="ai ai-arxiv"></i> arXiv</a>
-            <span style="margin:0 2px; color:#ccc;">/</span>
-            <a href="https://arxiv.org/pdf/2410.01635" style="color: #b31b1b;"><i class="fas fa-file-pdf"></i> Paper</a>
-            <span style="margin:0 2px; color:#ccc;">/</span>
-            <a href="https://github.com/sheldonresearch/ProG" style="color: #b31b1b;"><i class="fab fa-github"></i> Code</a>
-        </div>
-        <p style="margin-top:4px; margin-bottom:6px; color:#666;">
-          A theoretical framework for analyzing graph prompting from a data operation perspective.
-        </p>
-      </div>
-    </div>
+            <div class="news-item">
+              <div class="news-date">Dec, 2025</div>
+              <div class="news-content">
+                🎤 <b>[Talk]</b> Presented <b>Thinking with Images</b> at
+                Kuaishou Technology Research Seminar.
+              </div>
+            </div>
 
-  </div>
-  </div>
-</div>
+            <div class="news-item">
+              <div class="news-date">Oct, 2025</div>
+              <div class="news-content">
+                🚀 <b>[Release]</b> We are happy to release <b>VR-Thinker</b>:
+                Boosting Multimodal Reward Models through Thinking-with-Image
+                Reasoning.
+                <a href="https://arxiv.org/abs/2510.10518" target="_blank"
+                  >[Paper]</a
+                >
+                <a href="https://arxiv.org/abs/2510.10518" target="_blank"
+                  >[arXiv]</a
+                >
+                <a
+                  href="https://github.com/qunzhongwang/vr-thinker"
+                  target="_blank"
+                  >[Code]</a
+                >
+              </div>
+            </div>
 
-<!-- <div id="talks" class="talks">
+            <div class="news-item">
+              <div class="news-date">Sep, 2025</div>
+              <div class="news-content">
+                🔬 <b>[Visit]</b> Joined
+                <a
+                  href="https://liuzhuang13.github.io/#ResearchGroup"
+                  target="_blank"
+                  >Zhuang's Lab</a
+                >
+                at Princeton University, advised by
+                <a href="https://liuzhuang13.github.io/" target="_blank"
+                  >Prof. Zhuang Liu</a
+                >.
+              </div>
+            </div>
+
+            <div class="news-item">
+              <div class="news-date">Sep, 2025</div>
+              <div class="news-content">
+                🔬 <b>[Visit]</b> Conducted a 2-month internship at
+                <a href="#" target="_blank">Alan Turing Institute</a>, advised
+                by
+                <a href="https://liuzhuang13.github.io/" target="_blank"
+                  >Prof. Sotirios Sabanis</a
+                >.
+              </div>
+            </div>
+
+            <div class="news-item">
+              <div class="news-date">Jul, 2025</div>
+              <div class="news-content">
+                🎉 <b>[ICML 2025]</b> Our paper
+                <b>Does Graph Prompt Work</b> has been accepted to ICML 2025!
+              </div>
+            </div>
+
+            <div class="news-item">
+              <div class="news-date">Dec, 2024</div>
+              <div class="news-content">
+                🔬 <b>[Internship]</b> Started at
+                <a href="https://app.klingai.com/global/">Kling AI</a>, Kuaishou
+                Technology, advised by Dr.
+                <a href="https://xinntao.github.io/">Xintao Wang</a>.
+              </div>
+            </div>
+
+            <div class="news-item">
+              <div class="news-date">Apr, 2024</div>
+              <div class="news-content">
+                🔬 <b>[Visit]</b> Joined
+                <a href="https://dbgroup.se.cuhk.edu.hk/"
+                  >Database Research Group</a
+                >
+                at CUHK, advised by
+                <a
+                  href="https://www.se.cuhk.edu.hk/people/academic-staff/prof-cheng-hong/"
+                  >Prof. Hong Cheng</a
+                >.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <table
+          style="
+            width: 100%;
+            border: 0px;
+            border-spacing: 0px;
+            border-collapse: separate;
+            margin-right: auto;
+            margin-left: auto;
+          "
+        >
+          <tbody>
+            <tr>
+              <td colspan="2" style="padding: 20px 0px 10px 0px">
+                <h2 style="margin-bottom: 0px">
+                  <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                  Education
+                </h2>
+              </td>
+            </tr>
+
+            <tr>
+              <td
+                style="
+                  padding: 10px;
+                  width: 20%;
+                  vertical-align: middle;
+                  text-align: center;
+                "
+              >
+                <img
+                  src="images/icons/internship_cuhk.png"
+                  alt="CUHK"
+                  class="edu-icon edu-icon-cuhk"
+                />
+              </td>
+              <td style="padding: 10px; width: 80%; vertical-align: middle">
+                <a
+                  href="https://www.cuhk.edu.hk/"
+                  target="_blank"
+                  style="
+                    font-size: 1.2em;
+                    font-weight: bold;
+                    color: #2a7ae2;
+                    text-decoration: none;
+                  "
+                >
+                  The Chinese University of Hong Kong
+                </a>
+                <br />
+                <span style="font-size: 1em; font-weight: 500">
+                  Double Major in Mathematics and Information Engineering
+                </span>
+                <br />
+                <span class="edu-badges">
+                  <span class="gpa-badge">GPA: 3.927 / 4.000</span>
+                  <span class="rank-badge">Rank: 1</span>
+                  <a
+                    href="cv/CU_TS_UG_ENG.pdf"
+                    target="_blank"
+                    class="transcript-badge"
+                  >
+                    <i class="fa fa-file-alt" aria-hidden="true"></i> Transcript
+                  </a>
+                </span>
+                <br />
+                <span
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    color: #666;
+                    font-size: 0.9em;
+                  "
+                >
+                  <span>Hong Kong, China</span>
+                  <span>Sep 2023 – Jul 2027 (expected)</span>
+                </span>
+                <br />
+                <span style="font-size: 0.9em; font-style: italic; color: #555">
+                  ELITE Stream, Dean's List
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td
+                style="
+                  padding: 10px;
+                  width: 20%;
+                  vertical-align: middle;
+                  text-align: center;
+                "
+              >
+                <img
+                  src="images/icons/education_uw.png"
+                  alt="UW"
+                  class="edu-icon"
+                />
+              </td>
+              <td style="padding: 10px; width: 80%; vertical-align: middle">
+                <a
+                  href="https://www.washington.edu/"
+                  target="_blank"
+                  style="
+                    font-size: 1.2em;
+                    font-weight: bold;
+                    color: #2a7ae2;
+                    text-decoration: none;
+                  "
+                >
+                  University of Washington
+                </a>
+                <br />
+                <span style="font-size: 1em; font-weight: 500">
+                  Exchange Program in Computer Science and Engineering
+                </span>
+                <br />
+                <span class="edu-badges">
+                  <span class="gpa-badge">GPA: 4.000 / 4.000</span>
+                  <a
+                    href="cv/UW_Transcript.pdf"
+                    target="_blank"
+                    class="transcript-badge"
+                  >
+                    <i class="fa fa-file-alt" aria-hidden="true"></i> Transcript
+                  </a>
+                </span>
+                <br />
+                <span
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    color: #666;
+                    font-size: 0.9em;
+                  "
+                >
+                  <span>Seattle, United States</span>
+                  <span>Sep 2025 – Dec 2025</span>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div id="timeline" class="timeline-brief">
+          <h1 class="md-heading text-left">
+            <i class="fa fa-chart-line" aria-hidden="true"></i>
+            Experiences
+          </h1>
+
+          <div class="timeline-body">
+            <div class="timeline-item">
+              <div class="timeline-date">
+                <img
+                  class="social-icon"
+                  src="images/icons/internship_pton.svg"
+                  style="max-width: 40px"
+                />
+                2025.09 - Present
+              </div>
+              <div class="timeline-title">
+                Research Intern @
+                <a
+                  href="https://liuzhuang13.github.io/#ResearchGroup"
+                  target="_blank"
+                  >Zhuang's Lab</a
+                >, Princeton University
+              </div>
+              <div class="timeline-desc">
+                <div class="timeline-host">
+                  Advisor:
+                  <a href="https://liuzhuang13.github.io/" target="_blank"
+                    >Prof. Zhuang Liu</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-date">
+                <img
+                  class="social-icon"
+                  src="images/icons/internship_kling.jpeg"
+                  style="max-width: 40px"
+                />
+                2024.12 - 2025.09
+              </div>
+              <div class="timeline-title">
+                Research Intern @
+                <a href="https://app.klingai.com/global/" target="_blank"
+                  >Kling AI</a
+                >, Kuaishou Technology
+              </div>
+              <div class="timeline-desc">
+                <div class="timeline-host">
+                  Advisor:
+                  <a href="https://xinntao.github.io/" target="_blank"
+                    >Dr. Xintao Wang</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-date">
+                <img
+                  class="social-icon timeline-icon-cuhk"
+                  src="images/icons/internship_cuhk.png"
+                />
+                2024.04 - 2024.09
+              </div>
+              <div class="timeline-title">
+                Research Assistant @
+                <a href="https://dbgroup.se.cuhk.edu.hk/" target="_blank"
+                  >Database Research Group</a
+                >, CUHK
+              </div>
+              <div class="timeline-desc">
+                <div class="timeline-host">
+                  Advisor:
+                  <a
+                    href="https://www.se.cuhk.edu.hk/people/academic-staff/prof-cheng-hong/"
+                    target="_blank"
+                    >Prof. Hong Cheng</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="publications" class="publications">
+          <h1 class="md-heading text-left">
+            <i class="fa fa-file" aria-hidden="true"></i>
+            Publications
+          </h1>
+
+          <div
+            class="pub-filters"
+            style="margin-top: 15px; margin-bottom: 15px"
+          >
+            <button class="pub-filter-btn active" data-filter="all">All</button>
+            <button class="pub-filter-btn" data-filter="selected">
+              Core Contribution
+            </button>
+            <button class="pub-filter-btn" data-filter="vlm">VLM</button>
+            <button class="pub-filter-btn" data-filter="rl">RL</button>
+            <button class="pub-filter-btn" data-filter="theory">Theory</button>
+          </div>
+
+          <div class="pub-container">
+            <div class="pub-list pub-slider" style="margin-top: 30px">
+              <div
+                class="pub"
+                data-selected="true"
+                data-domain="vlm rl selected"
+              >
+                <div class="pub-left">
+                  <img
+                    class="intro-img frame"
+                    src="images/optiks_teaser.png"
+                    alt="Vero"
+                  />
+                </div>
+                <div class="pub-right">
+                  <div class="title">
+                    Vero: Open Thinking Recipes for Visual Reinforcement
+                    Learning
+                  </div>
+                  <div class="authors">
+                    Gabriel Sarch, Linrong Cai,
+                    <b style="color: #b31b1b">Qunzhong Wang</b>, Haoyang Wu,
+                    Danqi Chen, Zhuang Liu
+                  </div>
+                  <div class="publish">
+                    <span class="place">ViSCALE@CVPR 2026</span>
+                  </div>
+                  <div style="font-size: 0.95em">
+                    <a
+                      href="/pre-release/Open_RL_Recipe_for_VLMs_local.pdf"
+                      style="color: #b31b1b"
+                      ><i class="ai ai-arxiv"></i> arXiv</a
+                    >
+                    <span style="margin: 0 2px; color: #ccc">/</span>
+                    <a
+                      href="/pre-release/Open_RL_Recipe_for_VLMs_local.pdf"
+                      style="color: #b31b1b"
+                      ><i class="fas fa-file-pdf"></i> Paper</a
+                    >
+                    <span style="margin: 0 2px; color: #ccc">/</span>
+                    <a href="#" style="color: #b31b1b"
+                      ><i class="fa-brands fa-github"></i> Code</a
+                    >
+                  </div>
+                  <p style="margin-top: 4px; margin-bottom: 6px; color: #666">
+                    Open thinking recipes for visual reinforcement learning.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="pub"
+                data-selected="true"
+                data-domain="vlm rl selected"
+              >
+                <div class="pub-left">
+                  <img
+                    class="intro-img frame"
+                    src="images/talk_thinking_with_image_logo.png"
+                    alt="VR-Thinker"
+                  />
+                </div>
+                <div class="pub-right">
+                  <div class="title">
+                    VR-Thinker: Boosting Multimodal Reward Models through
+                    Thinking-with-Image Reasoning
+                  </div>
+                  <div class="authors">
+                    <b style="color: #b31b1b">Qunzhong Wang</b>, Jie Liu, Jiajun
+                    Liang, Yilei Jiang, Yuanxing Zhang, Yaozhi Zheng, Xintao
+                    Wang, Pengfei Wan, Xiangyu Yue, Jiaheng Liu
+                  </div>
+                  <div class="publish">
+                    <span class="place">Preprint</span>
+                  </div>
+                  <div style="font-size: 0.95em">
+                    <a
+                      href="https://arxiv.org/abs/2510.10518"
+                      style="color: #b31b1b"
+                      ><i class="ai ai-arxiv"></i> arXiv</a
+                    >
+                    <span style="margin: 0 2px; color: #ccc">/</span>
+                    <a
+                      href="https://huggingface.co/papers/2510.10518"
+                      style="color: #b31b1b"
+                      ><i class="fas fa-file-pdf"></i> Paper</a
+                    >
+                    <span style="margin: 0 2px; color: #ccc">/</span>
+                    <a
+                      href="https://github.com/qunzhongwang/vr-thinker"
+                      style="color: #b31b1b"
+                      ><i class="fab fa-github"></i> Code</a
+                    >
+                  </div>
+                  <p style="margin-top: 4px; margin-bottom: 6px; color: #666">
+                    Boosting multimodal reward models by adding tool invocation
+                    capabilities to handle long videos.
+                  </p>
+                </div>
+              </div>
+
+              <div class="pub" data-selected="true" data-domain="vlm">
+                <div class="pub-left">
+                  <img
+                    class="intro-img frame"
+                    src="images/teaser_screencoder.jpg"
+                    alt="ScreenCoder"
+                  />
+                </div>
+                <div class="pub-right">
+                  <div class="title">
+                    ScreenCoder: Advancing Visual-to-Code Generation for
+                    Front-End Automation via Modular Multimodal Agents
+                  </div>
+                  <div class="authors">
+                    Yilei Jiang, Yaozhi Zheng, Yuxuan Wan,
+                    <b style="color: #b31b1b">Qunzhong Wang</b>, Jiaming Han,
+                    Michael R. Lyu, Xiangyu Yue
+                  </div>
+                  <div class="publish">
+                    <span class="place">Preprint</span>
+                  </div>
+                  <div style="font-size: 0.95em">
+                    <a
+                      href="https://arxiv.org/abs/2507.22827"
+                      style="color: #b31b1b"
+                      ><i class="ai ai-arxiv"></i> arXiv</a
+                    >
+                    <span style="margin: 0 2px; color: #ccc">/</span>
+                    <a
+                      href="https://huggingface.co/papers/2507.22827"
+                      style="color: #b31b1b"
+                      ><i class="fas fa-file-pdf"></i> Paper</a
+                    >
+                    <span style="margin: 0 2px; color: #ccc">/</span>
+                    <a
+                      href="https://github.com/leigest519/ScreenCoder"
+                      style="color: #b31b1b"
+                      ><i class="fab fa-github"></i> Code</a
+                    >
+                  </div>
+                  <p style="margin-top: 4px; margin-bottom: 6px; color: #666">
+                    End-to-end visual-to-code generation via modular multimodal
+                    agents.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="pub"
+                data-selected="true"
+                data-domain="theory selected"
+              >
+                <div class="pub-left">
+                  <img
+                    class="intro-img frame"
+                    src="images/prompt_theory_curly.png"
+                    alt="Graph Prompt"
+                  />
+                </div>
+                <div class="pub-right">
+                  <div class="title">
+                    Does Graph Prompt Work? A Data Operation Perspective with
+                    Theoretical Analysis
+                  </div>
+                  <div class="authors">
+                    <b style="color: #b31b1b">Qunzhong Wang</b>, Xiangguo Sun,
+                    Hong Cheng
+                  </div>
+                  <div class="publish">
+                    <span class="place">ICML 2025</span>
+                  </div>
+                  <div style="font-size: 0.95em">
+                    <a
+                      href="https://arxiv.org/abs/2410.01635"
+                      style="color: #b31b1b"
+                      ><i class="ai ai-arxiv"></i> arXiv</a
+                    >
+                    <span style="margin: 0 2px; color: #ccc">/</span>
+                    <a
+                      href="https://arxiv.org/pdf/2410.01635"
+                      style="color: #b31b1b"
+                      ><i class="fas fa-file-pdf"></i> Paper</a
+                    >
+                    <span style="margin: 0 2px; color: #ccc">/</span>
+                    <a
+                      href="https://github.com/sheldonresearch/ProG"
+                      style="color: #b31b1b"
+                      ><i class="fab fa-github"></i> Code</a
+                    >
+                  </div>
+                  <p style="margin-top: 4px; margin-bottom: 6px; color: #666">
+                    A theoretical framework for analyzing graph prompting from a
+                    data operation perspective.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div id="talks" class="talks">
   <h1 class="md-heading text-left">
     <i class="fa fa-microphone" aria-hidden="true"></i>
     Talks & Tutorials
@@ -499,100 +830,360 @@
   </div>
 </div> -->
 
-<style>
-  .reviewer-section { display: flex; flex-wrap: wrap; margin-top: 8px; }
-  .reviewer-column { flex: 1 1 50%; box-sizing: border-box; padding-right: 20px; font-size: 0.85em; line-height: 1.6; padding-left: 1em; margin-bottom: 4px; }
-  .reviewer-column::before { content: "•"; position: absolute; left: 0; color: #555; }
-  @media (max-width: 600px) { .reviewer-column { flex: 1 1 100%; } }
-</style>
+        <style>
+          .reviewer-section {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 8px;
+          }
+          .reviewer-column {
+            flex: 1 1 50%;
+            box-sizing: border-box;
+            padding-right: 20px;
+            font-size: 0.85em;
+            line-height: 1.6;
+            padding-left: 1em;
+            margin-bottom: 4px;
+          }
+          .reviewer-column::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #555;
+          }
+          @media (max-width: 600px) {
+            .reviewer-column {
+              flex: 1 1 100%;
+            }
+          }
+        </style>
 
-  <div id="awards" class="awards">
-    <h1 class="md-heading text-left">
-      <i class="fa fa-trophy" aria-hidden="true"></i>
-      Selected Honors & Awards
-    </h1>
+        <div id="awards" class="awards">
+          <h1 class="md-heading text-left">
+            <i class="fa fa-trophy" aria-hidden="true"></i>
+            Selected Honors & Awards
+          </h1>
 
-    <div class="awards-container">
-    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-      <tbody>
-        <tr class="award-pinned">
-          <td style="padding-bottom:8px; width:28px; vertical-align:top; text-align:center;"><i class="fa fa-thumbtack fa-fw" style="color:#9b3022;" aria-hidden="true"></i></td>
-          <td style="padding-bottom:8px; width:18%; vertical-align:top;"><b>2022</b></td>
-          <td style="padding-bottom:8px; vertical-align:top;"><b >Chinese Mathematics Olympiad, Gold Medal</b></td>
-        </tr>
-        <tr>
-          <td style="padding-bottom:8px; width:28px; vertical-align:top; text-align:center;"><i class="fa fa-trophy fa-fw" style="color:#c0c0c0;" aria-hidden="true"></i></td>
-          <td style="padding-bottom:8px; width:18%; vertical-align:top;"><b>2025</b></td>
-          <td style="padding-bottom:8px; vertical-align:top;">Talent Development Scholarship, HKGOV</td>
-        </tr>
-        <tr>
-          <td style="padding-bottom:8px; width:28px; vertical-align:top; text-align:center;"><i class="fa fa-trophy fa-fw" style="color:#c0c0c0;" aria-hidden="true"></i></td>
-          <td style="padding-bottom:8px; width:18%; vertical-align:top;"><b>2025</b></td>
-          <td style="padding-bottom:8px; vertical-align:top;">Professor Charles K. Kao Research Exchange Scholarships, Chinese University of HK</td>
-        </tr>
-        <tr>
-          <td style="padding-bottom:8px; width:28px; vertical-align:top; text-align:center;"><i class="fa fa-trophy fa-fw" style="color:#c0c0c0;" aria-hidden="true"></i></td>
-          <td style="padding-bottom:8px; width:18%; vertical-align:top;"><b>2024, 2025</b></td>
-          <td style="padding-bottom:8px; vertical-align:top;">Dean's List, Chinese University of HK</td>
-        </tr>
-        <tr>
-          <td style="padding-bottom:8px; width:28px; vertical-align:top; text-align:center;"><i class="fa fa-trophy fa-fw" style="color:#c0c0c0;" aria-hidden="true"></i></td>
-          <td style="padding-bottom:8px; width:18%; vertical-align:top;"><b>2024, 2025</b></td>
-          <td style="padding-bottom:8px; vertical-align:top;">ELITE Stream Scholarship, Chinese University of HK</td>
-        </tr>
-        <tr>
-          <td style="padding-bottom:8px; width:28px; vertical-align:top; text-align:center;"><i class="fa fa-trophy fa-fw" style="color:#c0c0c0;" aria-hidden="true"></i></td>
-          <td style="padding-bottom:8px; width:18%; vertical-align:top;"><b>2024</b></td>
-          <td style="padding-bottom:8px; vertical-align:top;">Mathematical Modeling Contest, Meritorious Winner</td>
-        </tr>
-        <tr>
-          <td style="padding-bottom:8px; width:28px; vertical-align:top; text-align:center;"><i class="fa fa-trophy fa-fw" style="color:#c0c0c0;" aria-hidden="true"></i></td>
-          <td style="padding-bottom:8px; width:18%; vertical-align:top;"><b>2023</b></td>
-          <td style="padding-bottom:8px; vertical-align:top;">Soong Ching Ling Scholarship</td>
-        </tr>
-        <tr>
-          <td style="padding-bottom:8px; width:28px; vertical-align:top; text-align:center;"><i class="fa fa-trophy fa-fw" style="color:#c0c0c0;" aria-hidden="true"></i></td>
-          <td style="padding-bottom:8px; width:18%; vertical-align:top;"><b>2023</b></td>
-          <td style="padding-bottom:8px; vertical-align:top;">Prof Omar Wing Memorial Scholarship</td>
-        </tr>
-        <tr>
-          <td style="padding-bottom:8px; width:28px; vertical-align:top; text-align:center;"><i class="fa fa-trophy fa-fw" style="color:#c0c0c0;" aria-hidden="true"></i></td>
-          <td style="padding-bottom:8px; width:18%; vertical-align:top;"><b>2023</b></td>
-          <td style="padding-bottom:8px; vertical-align:top;">Simon Marais Mathematics Competition, 11th in East Division</td>
-        </tr>
-        <tr>
-          <td style="padding-bottom:8px; width:28px; vertical-align:top; text-align:center;"><i class="fa fa-trophy fa-fw" style="color:#c0c0c0;" aria-hidden="true"></i></td>
-          <td style="padding-bottom:8px; width:18%; vertical-align:top;"><b>2023</b></td>
-          <td style="padding-bottom:8px; vertical-align:top;">Admission Scholarship, Chinese University of HK</td>
-        </tr>
-        <tr>
-          <td style="padding-bottom:8px; width:28px; vertical-align:top; text-align:center;"><i class="fa fa-trophy fa-fw" style="color:#c0c0c0;" aria-hidden="true"></i></td>
-          <td style="padding-bottom:8px; width:18%; vertical-align:top;"><b>2022</b></td>
-          <td style="padding-bottom:8px; vertical-align:top;">China Physics Olympiad (Provincial), First Prize</td>
-        </tr>
-        <tr>
-          <td style="padding-bottom:8px; width:28px; vertical-align:top; text-align:center;"><i class="fa fa-trophy fa-fw" style="color:#c0c0c0;" aria-hidden="true"></i></td>
-          <td style="padding-bottom:8px; width:18%; vertical-align:top;"><b>2022</b></td>
-          <td style="padding-bottom:8px; vertical-align:top;">China Chemistry Olympiad (Provincial), First Prize</td>
-        </tr>
-      </tbody>
-    </table>
-    </div>
-  </div>
+          <div class="awards-container">
+            <table
+              style="
+                width: 100%;
+                border: 0px;
+                border-spacing: 0px;
+                border-collapse: separate;
+                margin-right: auto;
+                margin-left: auto;
+              "
+            >
+              <tbody>
+                <tr class="award-pinned">
+                  <td
+                    style="
+                      padding-bottom: 8px;
+                      width: 28px;
+                      vertical-align: top;
+                      text-align: center;
+                    "
+                  >
+                    <i
+                      class="fa fa-thumbtack fa-fw"
+                      style="color: #9b3022"
+                      aria-hidden="true"
+                    ></i>
+                  </td>
+                  <td
+                    style="padding-bottom: 8px; width: 18%; vertical-align: top"
+                  >
+                    <b>2022</b>
+                  </td>
+                  <td style="padding-bottom: 8px; vertical-align: top">
+                    <b>Chinese Mathematics Olympiad, Gold Medal</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style="
+                      padding-bottom: 8px;
+                      width: 28px;
+                      vertical-align: top;
+                      text-align: center;
+                    "
+                  >
+                    <i
+                      class="fa fa-trophy fa-fw"
+                      style="color: #c0c0c0"
+                      aria-hidden="true"
+                    ></i>
+                  </td>
+                  <td
+                    style="padding-bottom: 8px; width: 18%; vertical-align: top"
+                  >
+                    <b>2025</b>
+                  </td>
+                  <td style="padding-bottom: 8px; vertical-align: top">
+                    Talent Development Scholarship, HKGOV
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style="
+                      padding-bottom: 8px;
+                      width: 28px;
+                      vertical-align: top;
+                      text-align: center;
+                    "
+                  >
+                    <i
+                      class="fa fa-trophy fa-fw"
+                      style="color: #c0c0c0"
+                      aria-hidden="true"
+                    ></i>
+                  </td>
+                  <td
+                    style="padding-bottom: 8px; width: 18%; vertical-align: top"
+                  >
+                    <b>2025</b>
+                  </td>
+                  <td style="padding-bottom: 8px; vertical-align: top">
+                    Professor Charles K. Kao Research Exchange Scholarships,
+                    Chinese University of HK
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style="
+                      padding-bottom: 8px;
+                      width: 28px;
+                      vertical-align: top;
+                      text-align: center;
+                    "
+                  >
+                    <i
+                      class="fa fa-trophy fa-fw"
+                      style="color: #c0c0c0"
+                      aria-hidden="true"
+                    ></i>
+                  </td>
+                  <td
+                    style="padding-bottom: 8px; width: 18%; vertical-align: top"
+                  >
+                    <b>2024, 2025</b>
+                  </td>
+                  <td style="padding-bottom: 8px; vertical-align: top">
+                    Dean's List, Chinese University of HK
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style="
+                      padding-bottom: 8px;
+                      width: 28px;
+                      vertical-align: top;
+                      text-align: center;
+                    "
+                  >
+                    <i
+                      class="fa fa-trophy fa-fw"
+                      style="color: #c0c0c0"
+                      aria-hidden="true"
+                    ></i>
+                  </td>
+                  <td
+                    style="padding-bottom: 8px; width: 18%; vertical-align: top"
+                  >
+                    <b>2024, 2025</b>
+                  </td>
+                  <td style="padding-bottom: 8px; vertical-align: top">
+                    ELITE Stream Scholarship, Chinese University of HK
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style="
+                      padding-bottom: 8px;
+                      width: 28px;
+                      vertical-align: top;
+                      text-align: center;
+                    "
+                  >
+                    <i
+                      class="fa fa-trophy fa-fw"
+                      style="color: #c0c0c0"
+                      aria-hidden="true"
+                    ></i>
+                  </td>
+                  <td
+                    style="padding-bottom: 8px; width: 18%; vertical-align: top"
+                  >
+                    <b>2024</b>
+                  </td>
+                  <td style="padding-bottom: 8px; vertical-align: top">
+                    Mathematical Modeling Contest, Meritorious Winner
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style="
+                      padding-bottom: 8px;
+                      width: 28px;
+                      vertical-align: top;
+                      text-align: center;
+                    "
+                  >
+                    <i
+                      class="fa fa-trophy fa-fw"
+                      style="color: #c0c0c0"
+                      aria-hidden="true"
+                    ></i>
+                  </td>
+                  <td
+                    style="padding-bottom: 8px; width: 18%; vertical-align: top"
+                  >
+                    <b>2023</b>
+                  </td>
+                  <td style="padding-bottom: 8px; vertical-align: top">
+                    Soong Ching Ling Scholarship
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style="
+                      padding-bottom: 8px;
+                      width: 28px;
+                      vertical-align: top;
+                      text-align: center;
+                    "
+                  >
+                    <i
+                      class="fa fa-trophy fa-fw"
+                      style="color: #c0c0c0"
+                      aria-hidden="true"
+                    ></i>
+                  </td>
+                  <td
+                    style="padding-bottom: 8px; width: 18%; vertical-align: top"
+                  >
+                    <b>2023</b>
+                  </td>
+                  <td style="padding-bottom: 8px; vertical-align: top">
+                    Prof Omar Wing Memorial Scholarship
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style="
+                      padding-bottom: 8px;
+                      width: 28px;
+                      vertical-align: top;
+                      text-align: center;
+                    "
+                  >
+                    <i
+                      class="fa fa-trophy fa-fw"
+                      style="color: #c0c0c0"
+                      aria-hidden="true"
+                    ></i>
+                  </td>
+                  <td
+                    style="padding-bottom: 8px; width: 18%; vertical-align: top"
+                  >
+                    <b>2023</b>
+                  </td>
+                  <td style="padding-bottom: 8px; vertical-align: top">
+                    Simon Marais Mathematics Competition, 11th in East Division
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style="
+                      padding-bottom: 8px;
+                      width: 28px;
+                      vertical-align: top;
+                      text-align: center;
+                    "
+                  >
+                    <i
+                      class="fa fa-trophy fa-fw"
+                      style="color: #c0c0c0"
+                      aria-hidden="true"
+                    ></i>
+                  </td>
+                  <td
+                    style="padding-bottom: 8px; width: 18%; vertical-align: top"
+                  >
+                    <b>2023</b>
+                  </td>
+                  <td style="padding-bottom: 8px; vertical-align: top">
+                    Admission Scholarship, Chinese University of HK
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style="
+                      padding-bottom: 8px;
+                      width: 28px;
+                      vertical-align: top;
+                      text-align: center;
+                    "
+                  >
+                    <i
+                      class="fa fa-trophy fa-fw"
+                      style="color: #c0c0c0"
+                      aria-hidden="true"
+                    ></i>
+                  </td>
+                  <td
+                    style="padding-bottom: 8px; width: 18%; vertical-align: top"
+                  >
+                    <b>2022</b>
+                  </td>
+                  <td style="padding-bottom: 8px; vertical-align: top">
+                    China Physics Olympiad (Provincial), First Prize
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style="
+                      padding-bottom: 8px;
+                      width: 28px;
+                      vertical-align: top;
+                      text-align: center;
+                    "
+                  >
+                    <i
+                      class="fa fa-trophy fa-fw"
+                      style="color: #c0c0c0"
+                      aria-hidden="true"
+                    ></i>
+                  </td>
+                  <td
+                    style="padding-bottom: 8px; width: 18%; vertical-align: top"
+                  >
+                    <b>2022</b>
+                  </td>
+                  <td style="padding-bottom: 8px; vertical-align: top">
+                    China Chemistry Olympiad (Provincial), First Prize
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-  <div id="services" class="services">
-    <div class="bio-body" style="overflow:hidden;">
-      <h1 class="md-heading text-left">
-        <i class="fa fa-tasks" aria-hidden="true"></i>
-        Academic Services
-      </h1>
-      <p style="margin: 0; line-height: 1.8;">
-        <span style="font-weight: 500;">ICLR 2026</span>, <span style="font-weight: 500;">CVPR 2026</span> — Reviewer
-      </p>
-    </div>
-  </div>
+        <div id="services" class="services">
+          <div class="bio-body" style="overflow: hidden">
+            <h1 class="md-heading text-left">
+              <i class="fa fa-tasks" aria-hidden="true"></i>
+              Academic Services
+            </h1>
+            <p style="margin: 0; line-height: 1.8">
+              <span style="font-weight: 500">ICLR 2026</span>,
+              <span style="font-weight: 500">CVPR 2026</span> — Reviewer
+            </p>
+          </div>
+        </div>
 
-<!-- <div class="wrapper">
+        <!-- <div class="wrapper">
   <div class="bio">
     <h1 class="md-heading text-left">
       <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -605,52 +1196,91 @@
     </p>
   </div>
 </div> -->
-
-  </div>
-</div>
-
-<footer class="site-footer">
-  <div class="wrapper">
-    <div class="footer-col-wrapper footer-row">
-      <div class="footer-col footer-col-1">
-        <p style="margin:0 0 8px 0;">Email: <a href="mailto:qunzhong@link.cuhk.edu.hk">qunzhong [at] link [dot] cuhk [dot] edu [dot] hk</a></p>
-      </div>
-      <div class="footer-col footer-col-2" style="text-align:center; min-width:180px;">
-        <div class="pageview-widget">
-          <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=n_gpUNHZsZpCJnWeMvkLXE8fH_1c4Pdn3QKiJkq4B-w&cl=ffffff&w=300&t=tt"></script>
-        </div>
-      </div>
-      <div class="footer-col footer-col-3" style="text-align:right;">
-        <p class="text" style="margin:0;">
-          Last updated: <script>document.write(new Date(document.lastModified).toLocaleDateString());</script>
-        </p>
-        <p style="margin:0; font-size: 0.9em; color:#888;">This site is based on <a href="https://junhanzhu.github.io/" target="_blank" style="color:#888;">Junhan Zhu</a>'s template.</p>
       </div>
     </div>
-  </div>
-</footer>
 
-<style>
-.footer-row{ display:flex; align-items:center; justify-content:space-between; background:#fafafa; padding:18px 20px; border-radius:18px; }
-@media (max-width: 800px){ .footer-row{flex-direction:column; gap:12px; text-align:center;} .footer-col-3{ text-align:center !important; } }
-</style>
+    <footer class="site-footer">
+      <div class="wrapper">
+        <div class="footer-col-wrapper footer-row">
+          <div class="footer-col footer-col-1">
+            <p style="margin: 0 0 8px 0">
+              Email:
+              <a href="mailto:qunzhong@link.cuhk.edu.hk"
+                >qunzhong [at] link [dot] cuhk [dot] edu [dot] hk</a
+              >
+            </p>
+          </div>
+          <div
+            class="footer-col footer-col-2"
+            style="text-align: center; min-width: 180px"
+          >
+            <div class="pageview-widget">
+              <script
+                type="text/javascript"
+                id="clustrmaps"
+                src="//clustrmaps.com/map_v2.js?d=n_gpUNHZsZpCJnWeMvkLXE8fH_1c4Pdn3QKiJkq4B-w&cl=ffffff&w=300&t=tt"
+              ></script>
+            </div>
+          </div>
+          <div class="footer-col footer-col-3" style="text-align: right">
+            <p class="text" style="margin: 0">
+              Last updated:
+              <script>
+                document.write(
+                  new Date(document.lastModified).toLocaleDateString(),
+                );
+              </script>
+            </p>
+            <p style="margin: 0; font-size: 0.9em; color: #888">
+              This site is based on
+              <a
+                href="https://junhanzhu.github.io/"
+                target="_blank"
+                style="color: #888"
+                >Junhan Zhu</a
+              >'s template.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
 
-<script type="text/javascript">
-jQuery(document).ready(function() {
-    /* Publication domain filter */
-    jQuery('.pub-filter-btn').on('click', function() {
-      var filter = jQuery(this).data('filter');
-      jQuery('.pub-filter-btn').removeClass('active');
-      jQuery(this).addClass('active');
-      jQuery('#publications .pub-slider .pub').each(function() {
-        var domainStr = jQuery(this).data('domain') || '';
-        var domains = domainStr.split(/\s+/).filter(Boolean);
-        var show = (filter === 'all') || domains.indexOf(filter) !== -1;
-        jQuery(this).toggleClass('hidden', !show);
+    <style>
+      .footer-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #fafafa;
+        padding: 18px 20px;
+        border-radius: 18px;
+      }
+      @media (max-width: 800px) {
+        .footer-row {
+          flex-direction: column;
+          gap: 12px;
+          text-align: center;
+        }
+        .footer-col-3 {
+          text-align: center !important;
+        }
+      }
+    </style>
+
+    <script type="text/javascript">
+      jQuery(document).ready(function () {
+        /* Publication domain filter */
+        jQuery(".pub-filter-btn").on("click", function () {
+          var filter = jQuery(this).data("filter");
+          jQuery(".pub-filter-btn").removeClass("active");
+          jQuery(this).addClass("active");
+          jQuery("#publications .pub-slider .pub").each(function () {
+            var domainStr = jQuery(this).data("domain") || "";
+            var domains = domainStr.split(/\s+/).filter(Boolean);
+            var show = filter === "all" || domains.indexOf(filter) !== -1;
+            jQuery(this).toggleClass("hidden", !show);
+          });
+        });
       });
-    });
-});
-</script>
-
-</body>
+    </script>
+  </body>
 </html>
