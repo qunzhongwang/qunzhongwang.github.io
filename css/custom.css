@@ -185,26 +185,37 @@ table .edu-icon {
 .edu-badges {
   display: inline-flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 0;
   margin: 4px 0;
+  background-color: #f5f5f5;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.edu-badges > * + *::before {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  background-color: #dcdcdc;
+  margin-right: 12px;
+  vertical-align: middle;
 }
 .gpa-badge {
   display: inline-block;
   padding: 6px 12px;
   font-weight: bold;
   font-size: 0.9em;
-  border-radius: 6px;
   color: #b31b1b;
-  background-color: #f0f0f0;
+  background-color: transparent;
 }
 .rank-badge {
   display: inline-block;
   padding: 6px 12px;
   font-weight: bold;
   font-size: 0.9em;
-  border-radius: 6px;
   color: #0047ab;
-  background-color: #f0f0f0;
+  background-color: transparent;
 }
 .transcript-badge {
   display: inline-flex;
@@ -213,9 +224,8 @@ table .edu-icon {
   padding: 6px 12px;
   font-weight: bold;
   font-size: 0.9em;
-  border-radius: 6px;
   color: #000;
-  background-color: #f0f0f0;
+  background-color: transparent;
   text-decoration: none;
   transition: background-color 0.2s, color 0.2s;
 }
@@ -234,9 +244,9 @@ table .edu-icon {
   align-items: center;
   gap: 5px;
   padding: 5px 10px;
-  background-color: #f0f0f0;
+  background-color: #f5f5f5;
   color: #555;
-  border: 1px solid #ccc;
+  border: 1px solid #dcdcdc;
   border-radius: 6px;
   font-weight: bold;
   font-size: 0.9em;
@@ -247,9 +257,12 @@ table .edu-icon {
   font-size: 0.95em;
 }
 .resume-btn:hover {
-  background-color: #e5e5e5;
+  background-color: #ebebeb;
   color: #333;
   text-decoration: none;
+}
+.resume-wrap {
+  text-align: center;
 }
 
 /* PhD seeking statement */

@@ -711,7 +711,6 @@ pre>code {
     image-rendering: auto;            /* 保持原清晰度 */
 }
 
-/* 中屏时适当回一点，避免人物出框 */
 @media (max-width: 1200px) {
   .shallow-bg,
   .deep-bg {
@@ -719,7 +718,6 @@ pre>code {
   }
 }
 
-/* 窄屏：人物更易被底部裁切，略微上移纵向 */
 @media (max-width: 800px) {
   .shallow-bg,
   .deep-bg {
