@@ -1,0 +1,14 @@
+index.html
+  h_230b8be23cd171 214
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "2846413206c4dd583732b5ccd57c5fe7de80158c",
+  "prompts": {},
+  "humans": {
+    "h_230b8be23cd171": {
+      "author": "qunzhongwang <qunzhong@link.cuhk.edu.hk>"
+    }
+  }
+}
